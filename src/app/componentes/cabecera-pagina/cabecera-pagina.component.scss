@@ -1,0 +1,17 @@
+:host {
+  display: block;
+}
+
+.cabecera {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: calc(var(--ion-safe-area-top, 0px) + 28px);
+  margin-bottom: 18px;
+}
+
+.extra {
+  display: flex;
+  gap: 4px;
+}

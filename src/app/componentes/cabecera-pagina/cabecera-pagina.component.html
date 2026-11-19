@@ -1,0 +1,11 @@
+<header class="cabecera">
+  <div>
+    <h1 class="titulo-pagina">{{ titulo() }}</h1>
+    @if (subtitulo()) {
+      <p class="subtitulo-pagina">{{ subtitulo() }}</p>
+    }
+  </div>
+  <div class="extra">
+    <ng-content />
+  </div>
+</header>

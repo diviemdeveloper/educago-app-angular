@@ -1,0 +1,45 @@
+{
+  "name": "educago-app",
+  "version": "1.0.0",
+  "author": "Safa Reyes",
+  "homepage": "https://ionicframework.com/",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "lint": "ng lint"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^22.0.0",
+    "@angular/common": "^22.0.0",
+    "@angular/compiler": "^22.0.0",
+    "@angular/core": "^22.0.0",
+    "@angular/forms": "^22.0.0",
+    "@angular/platform-browser": "^22.0.0",
+    "@angular/router": "^22.0.0",
+    "@capacitor/android": "^8.0.0",
+    "@capacitor/app": "^8.0.0",
+    "@capacitor/core": "^8.0.0",
+    "@capacitor/haptics": "^8.0.0",
+    "@capacitor/keyboard": "^8.0.0",
+    "@capacitor/status-bar": "^8.0.0",
+    "@fontsource/poppins": "^5.0.0",
+    "@ionic/angular": "^9.0.0",
+    "ionicons": "^8.0.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.6.0",
+    "zone.js": "~0.15.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^22.0.0",
+    "@angular/cli": "^22.0.0",
+    "@angular/compiler-cli": "^22.0.0",
+    "@angular/language-service": "^22.0.0",
+    "@capacitor/cli": "^8.0.0",
+    "@ionic/angular-toolkit": "^12.0.0",
+    "typescript": "~6.0.0"
+  },
+  "description": "EducaGo · Gestión de eventos del centro educativo (Angular + Ionic)"
+}

@@ -1,0 +1,62 @@
+:host {
+  display: block;
+}
+
+.fila {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 26px;
+}
+
+.etiqueta {
+  width: 64px;
+  flex-shrink: 0;
+  font-size: 11px;
+  color: var(--app-gris);
+}
+
+.pista {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.relleno {
+  height: 14px;
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.valor {
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ion-text-color);
+}
+
+/* Variante "curso": pista violeta suave a todo lo ancho */
+.curso {
+  min-height: 32px;
+
+  .etiqueta {
+    width: 52px;
+    font-weight: 700;
+    color: var(--ion-text-color);
+  }
+  .pista {
+    height: 14px;
+    border-radius: 999px;
+    background: var(--app-violeta-suave);
+    overflow: hidden;
+  }
+  .relleno {
+    height: 100%;
+  }
+  .valor {
+    width: 24px;
+    text-align: right;
+  }
+}

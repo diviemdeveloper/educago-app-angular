@@ -1,0 +1,46 @@
+.centrado {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 12px;
+}
+
+.numero {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--app-fuente-titulos);
+  font-size: 88px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ion-color-primary);
+
+  span {
+    display: grid;
+    place-items: center;
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    background: var(--app-violeta-suave);
+    font-size: 46px;
+  }
+}
+
+h1 {
+  margin: 24px 0 6px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+p {
+  margin: 0 0 26px;
+  color: var(--app-gris);
+}
+
+ion-button {
+  --padding-start: 32px;
+  --padding-end: 32px;
+}

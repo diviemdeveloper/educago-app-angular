@@ -1,0 +1,52 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <app-cabecera-pagina titulo="Panel" subtitulo="Hola, Dirección 👋">
+    <ion-button fill="clear" class="redondo" (click)="cambiarTema()"
+                [attr.aria-label]="oscuro ? 'Activar modo claro' : 'Activar modo oscuro'">
+      <ion-icon slot="icon-only" [name]="oscuro ? 'sunny-outline' : 'moon-outline'"></ion-icon>
+    </ion-button>
+    <ion-button fill="clear" class="redondo" routerLink="/login" routerDirection="root" aria-label="Cerrar sesión">
+      <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+    </ion-button>
+  </app-cabecera-pagina>
+
+  <!-- Cifras -->
+  <div class="cifras">
+    <app-tarjeta-stat [valor]="resumen.publicados" etiqueta="Publicados" color="#6d28d9" />
+    <app-tarjeta-stat [valor]="resumen.borradores" etiqueta="Borradores" color="#eab308" />
+    <app-tarjeta-stat [valor]="resumen.inscritos" etiqueta="Inscritos" color="#06b6d4" />
+    <app-tarjeta-stat [valor]="resumen.asistencia + '%'" etiqueta="Asistencia" color="#22c55e" />
+  </div>
+
+  <div class="centrado">
+    <ion-button class="nuevo grande" routerLink="/eventos/nuevo">+ Nuevo evento</ion-button>
+  </div>
+
+  <!-- Avisos -->
+  <h2 class="titulo-seccion">Requiere atención</h2>
+  @for (e of avisos; track e.id) {
+    <a class="aviso" [routerLink]="['/app/eventos', e.id]">
+      <strong>⚠ {{ e.titulo }}: aforo completo</strong>
+      <span>{{ e.enEspera }} personas en lista de espera</span>
+    </a>
+  } @empty {
+    <app-estado-vacio icono="✅" titulo="Todo en orden" texto="Ningún evento necesita tu atención." />
+  }
+
+  <!-- Próximos eventos -->
+  <h2 class="titulo-seccion">Próximos eventos</h2>
+  <div class="lista">
+    @for (e of proximos; track e.id) {
+      <app-tarjeta-evento [evento]="e" [conHora]="true">
+        @if (e.inscritos >= e.aforoMaximo) {
+          <app-chip-estado insignia estado="COMPLETO" />
+        } @else {
+          <app-chip-estado insignia estado="PLAZAS" [texto]="e.inscritos + '/' + e.aforoMaximo" />
+        }
+      </app-tarjeta-evento>
+    } @empty {
+      <app-estado-vacio icono="📅" titulo="No hay eventos publicados" texto="Crea uno y aparecerá aquí.">
+        <ion-button fill="outline" routerLink="/eventos/nuevo">Crear evento</ion-button>
+      </app-estado-vacio>
+    }
+  </div>
+</ion-content>

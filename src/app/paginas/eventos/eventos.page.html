@@ -1,0 +1,54 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <app-cabecera-pagina titulo="Eventos" subtitulo="Gestiona cualquier evento" />
+
+  <!-- Filtros por estado -->
+  <ion-segment [(ngModel)]="filtro" [scrollable]="true" class="filtros">
+    @for (f of filtros; track f.valor) {
+      <ion-segment-button [value]="f.valor">
+        <ion-label>{{ f.texto }}</ion-label>
+      </ion-segment-button>
+    }
+  </ion-segment>
+
+  <div class="lista">
+    @for (e of eventosVisibles; track e.id) {
+      <div class="bloque">
+        <app-tarjeta-evento [evento]="e">
+          <app-chip-estado insignia [estado]="e.estado" />
+        </app-tarjeta-evento>
+
+        <!-- Las acciones cambian según el estado del evento -->
+        @switch (e.estado) {
+          @case ('PUBLICADO') {
+            <div class="acciones">
+              <ion-button fill="outline" [routerLink]="['/eventos', e.id, 'editar']">Editar</ion-button>
+              <ion-button fill="outline" color="danger" (click)="cancelar(e)">Cancelar</ion-button>
+            </div>
+          }
+          @case ('BORRADOR') {
+            <div class="acciones">
+              <ion-button (click)="publicar(e)">Publicar</ion-button>
+              <ion-button fill="outline" [routerLink]="['/eventos', e.id, 'editar']">Editar</ion-button>
+            </div>
+          }
+          @default {
+            <div class="acciones una">
+              <ion-button fill="outline" color="danger" (click)="eliminar(e)">Eliminar</ion-button>
+            </div>
+          }
+        }
+      </div>
+    } @empty {
+      <app-estado-vacio icono="🗂️" titulo="No hay eventos aquí" texto="Prueba con otro filtro o crea un evento nuevo.">
+        <ion-button fill="outline" (click)="filtro = 'TODOS'">Ver todos</ion-button>
+      </app-estado-vacio>
+    }
+  </div>
+
+  <!-- Botón flotante: crear evento -->
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button routerLink="/eventos/nuevo" aria-label="Nuevo evento">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

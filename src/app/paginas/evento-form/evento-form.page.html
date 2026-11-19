@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/eventos" text="Cancelar"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ editando ? 'Editar evento' : 'Nuevo evento' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- Campos de texto -->
+  <label class="etiqueta-campo" for="titulo">Título</label>
+  <div class="caja-campo">
+    <ion-input id="titulo" [(ngModel)]="titulo" placeholder="Feria de Ciencias" [maxlength]="80"
+               aria-label="Título"></ion-input>
+  </div>
+
+  <label class="etiqueta-campo" for="descripcion">Descripción</label>
+  <div class="caja-campo">
+    <ion-textarea id="descripcion" [(ngModel)]="descripcion" [autoGrow]="true" [rows]="1"
+                  placeholder="Muestra de proyectos del alumnado" aria-label="Descripción"></ion-textarea>
+  </div>
+
+  <label class="etiqueta-campo" for="requisitos">Requisitos</label>
+  <div class="caja-campo">
+    <ion-input id="requisitos" [(ngModel)]="requisitos" placeholder="Traer bata, autorización firmada"
+               aria-label="Requisitos"></ion-input>
+  </div>
+
+  <!-- Una opción entre varias: chips de categoría -->
+  <span class="etiqueta-campo">Categoría</span>
+  <div class="categorias">
+    @for (c of categorias; track c.id) {
+      <button type="button" class="cat"
+              [class.elegida]="categoriaId === c.id"
+              [style.background]="categoriaId === c.id ? c.color : tinte(c.color)"
+              [style.color]="categoriaId === c.id ? '#fff' : c.color"
+              (click)="categoriaId = c.id">
+        {{ c.nombre }}
+      </button>
+    }
+  </div>
+
+  <!-- Fechas -->
+  <div class="dos-columnas">
+    <div>
+      <span class="etiqueta-campo">Inicio</span>
+      <app-campo-fecha [(valor)]="inicio" etiqueta="Fecha de inicio" />
+    </div>
+    <div>
+      <span class="etiqueta-campo">Fin</span>
+      <app-campo-fecha [(valor)]="fin" etiqueta="Fecha de fin" />
+    </div>
+  </div>
+  @if (fechasMal) {
+    <p class="error">El fin tiene que ser posterior al inicio.</p>
+  }
+
+  <!-- Selector + número -->
+  <div class="dos-columnas lugar">
+    <div>
+      <span class="etiqueta-campo">Lugar</span>
+      <div class="caja-campo">
+        <ion-select [(ngModel)]="lugarId" (ionChange)="ajustarAforo()" interface="action-sheet"
+                    placeholder="Elige" cancelText="Cancelar" aria-label="Lugar" class="sin-flecha">
+          @for (l of lugares; track l.id) {
+            <ion-select-option [value]="l.id">{{ l.nombre }} (aforo {{ l.aforoMaximo }})</ion-select-option>
+          }
+        </ion-select>
+      </div>
+    </div>
+    <div>
+      <label class="etiqueta-campo" for="aforo">Aforo máx.</label>
+      <div class="caja-campo">
+        <ion-input id="aforo" type="number" inputmode="numeric" [min]="1" [(ngModel)]="aforo"
+                   aria-label="Aforo máximo"></ion-input>
+      </div>
+    </div>
+  </div>
+
+  <span class="etiqueta-campo">Fecha límite de inscripción</span>
+  <app-campo-fecha [(valor)]="limite" etiqueta="Fecha límite de inscripción" />
+
+  <!-- Varias opciones: cursos -->
+  <span class="etiqueta-campo">Cursos (vacío = todo el centro)</span>
+  <div class="cursos">
+    @for (c of cursos; track c.id) {
+      <button type="button" class="curso" [class.elegido]="cursosElegidos.has(c.id)"
+              [attr.aria-pressed]="cursosElegidos.has(c.id)" (click)="alternarCurso(c.id)">
+        {{ c.nombre }}
+      </button>
+    }
+  </div>
+
+  <!-- Fichero -->
+  <label class="cartel">
+    <input type="file" accept="image/*" (change)="elegirCartel($event)" />
+    📷 {{ cartel || 'Añadir cartel (opcional)' }}
+  </label>
+
+  <div class="botones">
+    <ion-button class="grande" fill="outline" (click)="guardar('BORRADOR')" [disabled]="!valido">
+      Guardar borrador
+    </ion-button>
+    <ion-button class="grande" (click)="guardar('PUBLICADO')" [disabled]="!valido">Publicar</ion-button>
+  </div>
+</ion-content>

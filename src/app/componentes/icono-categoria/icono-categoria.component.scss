@@ -1,0 +1,11 @@
+:host {
+  display: block;
+  flex-shrink: 0;
+}
+
+.icono {
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  line-height: 1;
+}

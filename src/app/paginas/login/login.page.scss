@@ -1,0 +1,97 @@
+.login {
+  --background: var(--app-superficie);
+}
+
+/* ── Zona 1: la portada ───────────────────────── */
+.portada {
+  position: relative;
+  height: 44vh;
+  overflow: hidden;
+  background: linear-gradient(160deg, #6d28d9 0%, #4c1d95 55%, #1e1b4b 100%);
+
+  img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;                 /* rellena sin deformarse */
+  }
+  &::after {                           /* degradado para que el texto blanco se lea */
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(30, 27, 75, 0.3) 0%, rgba(30, 27, 75, 0) 40%, rgba(30, 27, 75, 0.65) 100%);
+  }
+}
+
+/* Emojis de las categorías flotando, como "fotos" de la portada */
+.burbujas span {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.14);
+  font-size: 32px;
+
+  &:nth-child(1) { top: 14%; left: 8%;  transform: rotate(-8deg); }
+  &:nth-child(2) { top: 8%;  left: 42%; transform: rotate(6deg); }
+  &:nth-child(3) { top: 18%; right: 8%; transform: rotate(10deg); }
+  &:nth-child(4) { top: 40%; left: 26%; transform: rotate(4deg); width: 52px; height: 52px; font-size: 26px; }
+  &:nth-child(5) { top: 38%; right: 24%; transform: rotate(-6deg); width: 52px; height: 52px; font-size: 26px; }
+}
+
+.marca {
+  position: absolute;
+  left: 24px;
+  bottom: 44px;
+  z-index: 1;
+  color: #fff;
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--app-fuente-titulos);
+    font-weight: 700;
+    font-size: 28px;
+  }
+  p { margin: 4px 0 0; opacity: 0.9; }
+}
+
+/* ── Zona 2: la hoja ──────────────────────────── */
+.hoja {
+  position: relative;
+  z-index: 2;
+  margin-top: -24px;                       /* sube y se monta sobre la portada */
+  border-radius: 24px 24px 0 0;
+  background: var(--app-superficie);
+  padding: 28px 24px 24px;
+
+  h1 { margin: 0; font-size: 26px; font-weight: 700; }
+  .subtitulo { color: var(--app-gris); margin: 4px 0 22px; }
+
+  ion-input {
+    --border-radius: 12px;
+    --border-color: var(--app-borde);
+    --highlight-color-focused: var(--ion-color-primary);
+    margin-bottom: 14px;
+  }
+}
+
+.olvido {
+  display: block;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ion-color-primary);
+  margin: -4px 0 18px;
+}
+
+.registro {
+  text-align: center;
+  font-size: 14px;
+  color: var(--app-gris);
+  a { color: var(--ion-color-primary); font-weight: 700; }
+}

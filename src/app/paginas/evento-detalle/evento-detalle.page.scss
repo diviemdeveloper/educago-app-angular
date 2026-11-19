@@ -1,0 +1,135 @@
+/* ── Portada de color ──────────────────────────── */
+.portada {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: calc(var(--ion-safe-area-top, 0px) + 70px) 20px 56px;
+  color: #fff;
+
+  .emoji {
+    font-size: 56px;
+    line-height: 1;
+  }
+  .categoria {
+    margin-top: 14px;
+    padding: 4px 18px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.22);
+    font-size: 13px;
+    font-weight: 700;
+  }
+}
+
+.volver {
+  position: absolute;
+  top: calc(var(--ion-safe-area-top, 0px) + 18px);
+  left: 8px;
+  --color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+/* ── Hoja superpuesta ──────────────────────────── */
+.hoja {
+  position: relative;
+  margin-top: -26px;
+  padding: 26px 20px 30px;
+  border-radius: 26px 26px 0 0;
+  background: var(--ion-background-color);
+
+  h1 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  h2 {
+    margin: 22px 0 6px;
+    font-size: 15px;
+    font-weight: 700;
+  }
+}
+
+.titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.organiza {
+  margin: 4px 0 18px;
+  font-size: 13px;
+  color: var(--app-gris);
+}
+
+/* Lista de datos: cada fila es una "pastilla" blanca */
+ion-list.datos {
+  background: transparent;
+  padding: 0;
+
+  ion-item {
+    --background: var(--app-superficie);
+    --min-height: 42px;
+    --padding-start: 14px;
+    --inner-padding-end: 14px;
+    border-radius: 12px;
+    margin-bottom: 8px;
+    font-size: 13px;
+  }
+  .ico {
+    margin-inline-end: 12px;
+    font-size: 15px;
+  }
+  ion-label {
+    color: var(--app-gris);
+  }
+  ion-note {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ion-text-color);
+  }
+}
+
+.texto {
+  margin: 0;
+  font-size: 14px;
+  color: var(--app-gris);
+}
+
+.cursos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.curso {
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--app-violeta-suave);
+  color: var(--ion-color-primary);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Botones: dos arriba y "Resultados" centrado debajo */
+.botones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 28px;
+
+  ion-button {
+    min-height: 46px;
+    font-size: 14px;
+  }
+  .resultados {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 50%;
+  }
+}
+
+.no-existe {
+  padding-top: calc(var(--ion-safe-area-top, 0px) + 20px);
+  ion-back-button { --color: var(--ion-color-primary); margin-bottom: 20px; }
+}

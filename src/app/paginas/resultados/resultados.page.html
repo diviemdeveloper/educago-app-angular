@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="'/app/eventos/' + id()" [text]="evento?.titulo ?? 'Volver'"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h1 class="titulo-pagina">Resultados</h1>
+
+  <div class="publicaciones">
+    @for (p of publicaciones; track p.id) {
+      <ion-card>
+        <ion-card-content>
+          <p class="autor">{{ p.autor }} · {{ p.rolAutor }}</p>
+          <p class="fecha">{{ diaMesHora(p.fecha) }}</p>
+          @if (p.destacado) {
+            <p class="destacado">{{ p.destacado }}</p>
+          }
+          <p class="texto">{{ p.texto }}</p>
+
+          @if (p.fotos.length) {
+            <div class="fotos">
+              @for (f of p.fotos; track f.id) {
+                @if (f.url) {
+                  <img [src]="f.url" alt="Foto del evento" />
+                } @else {
+                  <div class="foto" [style.background]="f.color" aria-label="Foto del evento">📷</div>
+                }
+              }
+            </div>
+          }
+        </ion-card-content>
+      </ion-card>
+    } @empty {
+      <app-estado-vacio icono="🏆" titulo="Aún no hay resultados" texto="Publica las fotos y los ganadores del evento." />
+    }
+  </div>
+
+  <ion-button class="grande" expand="block" (click)="modalAbierto = true">+ Publicar resultados</ion-button>
+  <p class="nota">Solo organizadores y asistentes confirmados</p>
+
+  <!-- Ventana tipo hoja para publicar -->
+  <ion-modal class="hoja" [isOpen]="modalAbierto" (didDismiss)="modalAbierto = false"
+             [initialBreakpoint]="0.7" [breakpoints]="[0, 0.7, 0.95]">
+    <ng-template>
+      <ion-content class="ion-padding">
+        <div class="cabecera-modal">
+          <h2>Publicar resultados</h2>
+          <ion-button fill="clear" (click)="modalAbierto = false">Cancelar</ion-button>
+        </div>
+
+        <label class="etiqueta-campo" for="destacado">Destacado</label>
+        <div class="caja-campo">
+          <ion-input id="destacado" [(ngModel)]="nuevoDestacado" placeholder="🏆 1.º puesto: …"
+                     aria-label="Destacado"></ion-input>
+        </div>
+
+        <label class="etiqueta-campo" for="texto">Texto</label>
+        <div class="caja-campo">
+          <ion-textarea id="texto" [(ngModel)]="nuevoTexto" [autoGrow]="true" [rows]="3"
+                        placeholder="Menciones, agradecimientos…" aria-label="Texto"></ion-textarea>
+        </div>
+
+        <span class="etiqueta-campo">Fotos</span>
+        <div class="fotos">
+          @for (c of nuevasFotos; track $index) {
+            <div class="foto" [style.background]="c">📷</div>
+          }
+          @if (puedeAnadirFoto) {
+            <button type="button" class="foto anadir" (click)="anadirFoto()" aria-label="Añadir foto">＋</button>
+          }
+        </div>
+
+        <ion-button class="grande publicar" expand="block" (click)="publicar()"
+                    [disabled]="!nuevoTexto.trim() && !nuevoDestacado.trim()">Publicar</ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

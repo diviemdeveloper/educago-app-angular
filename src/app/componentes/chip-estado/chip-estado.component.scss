@@ -1,0 +1,19 @@
+:host {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.chip {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.ok         { background: var(--app-ok-fondo);         color: var(--app-ok-texto); }
+.aviso      { background: var(--app-aviso-fondo);      color: var(--app-aviso-texto); }
+.error      { background: var(--app-error-fondo);      color: var(--app-error-texto); }
+.finalizado { background: var(--app-finalizado-fondo); color: var(--app-finalizado-texto); font-size: 10px; }

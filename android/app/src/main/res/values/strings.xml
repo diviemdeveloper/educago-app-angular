@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">EducaGo</string>
+    <string name="title_activity_main">EducaGo</string>
+    <string name="package_name">es.safareyes.educago</string>
+    <string name="custom_url_scheme">es.safareyes.educago</string>
+</resources>

@@ -1,0 +1,14 @@
+<div class="fila" [class.curso]="variante() === 'curso'">
+  <span class="etiqueta">{{ etiqueta() }}</span>
+
+  <div class="pista">
+    <div class="relleno" [style.width.%]="porcentaje()" [style.background]="color()"></div>
+    @if (variante() === 'categoria') {
+      <span class="valor">{{ valor() }}</span>
+    }
+  </div>
+
+  @if (variante() === 'curso') {
+    <span class="valor">{{ valor() }}</span>
+  }
+</div>

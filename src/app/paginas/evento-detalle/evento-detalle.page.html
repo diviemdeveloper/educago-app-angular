@@ -1,0 +1,76 @@
+<ion-content [fullscreen]="true">
+  @if (evento; as e) {
+    <!-- Portada del color de la categoría -->
+    <div class="portada" [style.background]="e.categoria.color">
+      <ion-back-button class="volver" defaultHref="/app/eventos" text="Volver"></ion-back-button>
+      <div class="emoji" aria-hidden="true">{{ e.categoria.icono }}</div>
+      <span class="categoria">{{ e.categoria.nombre }}</span>
+    </div>
+
+    <!-- Hoja con los datos -->
+    <div class="hoja">
+      <div class="titulo">
+        <h1>{{ e.titulo }}</h1>
+        @if (e.estado !== 'PUBLICADO') {
+          <app-chip-estado [estado]="e.estado" />
+        }
+      </div>
+      <p class="organiza">Organiza: {{ e.organizador }}</p>
+
+      <ion-list lines="none" class="datos">
+        <ion-item>
+          <span slot="start" class="ico" aria-hidden="true">🕙</span>
+          <ion-label>Fecha</ion-label>
+          <ion-note slot="end">{{ fecha }}</ion-note>
+        </ion-item>
+        <ion-item>
+          <span slot="start" class="ico" aria-hidden="true">📍</span>
+          <ion-label>Lugar</ion-label>
+          <ion-note slot="end">{{ e.lugar.nombre }}</ion-note>
+        </ion-item>
+        <ion-item>
+          <span slot="start" class="ico" aria-hidden="true">👥</span>
+          <ion-label>Plazas</ion-label>
+          <ion-note slot="end">{{ plazasLibres }} libres de {{ e.aforoMaximo }}</ion-note>
+        </ion-item>
+        <ion-item>
+          <span slot="start" class="ico" aria-hidden="true">⏳</span>
+          <ion-label>Inscripción hasta</ion-label>
+          <ion-note slot="end">{{ limite }}</ion-note>
+        </ion-item>
+      </ion-list>
+
+      @if (requisitos.length) {
+        <h2>Requisitos</h2>
+        <p class="texto">
+          @for (r of requisitos; track r) { <span>• {{ r }} </span> }
+        </p>
+      }
+
+      <h2>Cursos</h2>
+      <div class="cursos">
+        @for (c of e.cursos; track c.id) {
+          <span class="curso">{{ c.nombre }}</span>
+        } @empty {
+          <span class="curso">Todo el centro</span>
+        }
+      </div>
+
+      <h2>Descripción</h2>
+      <p class="texto">{{ e.descripcion }}</p>
+
+      <div class="botones">
+        <ion-button [routerLink]="['/eventos', e.id, 'historial']">Historial de cambios</ion-button>
+        <ion-button [routerLink]="['/eventos', e.id, 'asistencia']">Pasar lista</ion-button>
+        <ion-button class="resultados" [routerLink]="['/eventos', e.id, 'resultados']">Resultados</ion-button>
+      </div>
+    </div>
+  } @else {
+    <div class="ion-padding no-existe">
+      <ion-back-button defaultHref="/app/eventos" text="Volver"></ion-back-button>
+      <app-estado-vacio icono="🔍" titulo="Evento no encontrado" texto="Puede que se haya eliminado.">
+        <ion-button fill="outline" routerLink="/app/eventos" routerDirection="back">Ver eventos</ion-button>
+      </app-estado-vacio>
+    </div>
+  }
+</ion-content>

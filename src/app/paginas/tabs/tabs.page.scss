@@ -1,0 +1,36 @@
+ion-tab-bar {
+  --background: var(--app-superficie);               /* fondo blanco */
+  --border: 0;                                       /* sin línea (como en el Figma) */
+  --color: var(--app-gris);                          /* pestañas normales */
+  --color-selected: var(--ion-color-primary);        /* pestaña activa */
+  height: 72px;
+  padding: 6px 8px calc(var(--ion-safe-area-bottom, 0px) + 6px);
+}
+
+ion-tab-button {
+  --ripple-color: transparent;                       /* sin efecto de onda al pulsar */
+  --background: transparent;
+  border-radius: 16px;
+  margin: 0 4px;
+  transition: background-color 0.25s;               /* la píldora aparece suavemente */
+
+  .emoji {
+    font-size: 20px;
+    line-height: 1;
+  }
+  ion-label {
+    margin-top: 6px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+}
+
+/* Ionic añade la clase .tab-selected al botón de la pestaña activa:
+   le ponemos la "píldora" violeta suave que hay en el Figma */
+ion-tab-button.tab-selected {
+  background: var(--app-violeta-suave);
+
+  ion-label {
+    font-weight: 700;
+  }
+}

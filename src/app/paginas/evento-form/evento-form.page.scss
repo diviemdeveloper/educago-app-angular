@@ -1,0 +1,107 @@
+ion-toolbar {
+  --padding-start: 8px;
+  --padding-end: 8px;
+}
+
+ion-back-button {
+  --color: var(--ion-color-primary);
+  font-weight: 700;
+}
+
+ion-title {
+  font-weight: 700;
+  font-size: 17px;
+}
+
+ion-content {
+  --padding-start: 20px;
+  --padding-end: 20px;
+}
+
+/* Chips de categoría: fila con scroll horizontal */
+.categorias {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  margin: 0 -20px;
+  padding: 0 20px 4px;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar { display: none; }
+}
+
+.cat {
+  flex-shrink: 0;
+  padding: 7px 14px;
+  border: 0;
+  border-radius: 999px;
+  font-family: var(--ion-font-family);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+/* Rejilla de cursos (3 columnas) */
+.cursos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.curso {
+  min-height: 34px;
+  border-radius: 999px;
+  border: 1.5px solid var(--app-borde);
+  background: var(--app-superficie);
+  color: var(--ion-text-color);
+  font-family: var(--ion-font-family);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+
+  &.elegido {
+    border-color: var(--ion-color-primary);
+    background: var(--ion-color-primary);
+    color: var(--ion-color-primary-contrast);
+  }
+}
+
+ion-select.sin-flecha::part(icon) {
+  display: none;
+}
+ion-select {
+  width: 100%;
+  font-size: 14px;
+}
+
+/* "📷 Añadir cartel (opcional)" */
+.cartel {
+  display: block;
+  margin-top: 22px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--app-violeta-suave);
+  color: var(--ion-color-primary);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  input { display: none; }
+}
+
+.error {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--ion-color-danger);
+}
+
+.botones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 28px 0 20px;
+}

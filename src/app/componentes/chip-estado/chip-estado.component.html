@@ -1,0 +1,10 @@
+@switch (estado()) {
+  @case ('PUBLICADO')  { <span class="chip ok">Publicado</span> }
+  @case ('BORRADOR')   { <span class="chip aviso">Borrador</span> }
+  @case ('FINALIZADO') { <span class="chip finalizado">Finalizado</span> }
+  @case ('CANCELADO')  { <span class="chip error">Cancelado</span> }
+  @case ('LIBRE')      { <span class="chip ok">Libre</span> }
+  @case ('OCUPADO')    { <span class="chip error">Ocupado hoy</span> }
+  @case ('COMPLETO')   { <span class="chip aviso">Completo</span> }
+  @case ('PLAZAS')     { <span class="chip ok">{{ texto() }}</span> }
+}

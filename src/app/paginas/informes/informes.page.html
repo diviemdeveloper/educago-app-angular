@@ -1,0 +1,29 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <app-cabecera-pagina titulo="Participación" subtitulo="Solo asistencia confirmada" />
+
+  <!-- Rango de fechas -->
+  <div class="dos-columnas fechas">
+    <app-campo-fecha [(valor)]="desde" presentacion="date" estilo="pastilla" etiqueta="Desde" />
+    <app-campo-fecha [(valor)]="hasta" presentacion="date" estilo="pastilla" etiqueta="Hasta" />
+  </div>
+
+  <section class="tarjeta">
+    <h2>Por categoría</h2>
+    @for (c of porCategoria; track c.etiqueta) {
+      <app-barra-progreso [etiqueta]="c.etiqueta" [valor]="c.total" [maximo]="maxCategoria"
+                          [color]="c.color ?? '#6d28d9'" />
+    } @empty {
+      <app-estado-vacio icono="📊" titulo="Sin datos" texto="No hay asistencia en estas fechas." />
+    }
+  </section>
+
+  <section class="tarjeta">
+    <h2>Por curso</h2>
+    @for (c of porCurso; track c.etiqueta) {
+      <app-barra-progreso variante="curso" [etiqueta]="c.etiqueta" [valor]="c.total" [maximo]="maxCurso"
+                          color="var(--ion-color-primary)" />
+    } @empty {
+      <app-estado-vacio icono="🎓" titulo="Sin datos" texto="No hay asistencia en estas fechas." />
+    }
+  </section>
+</ion-content>

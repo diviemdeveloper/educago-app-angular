@@ -1,0 +1,30 @@
+:host {
+  display: block;
+}
+
+.raya {
+  display: block;
+  height: 6px;
+  border-radius: 4px;
+}
+
+.caja {
+  display: flex;
+  flex-direction: column;
+  padding: 22px 16px 14px;
+  background: var(--app-superficie);
+  border-radius: 0 0 var(--app-radio) var(--app-radio);
+
+  strong {
+    font-family: var(--app-fuente-titulos);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--ion-text-color);
+  }
+  span {
+    margin-top: 4px;
+    font-size: 13px;
+    color: var(--app-gris);
+  }
+}

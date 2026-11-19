@@ -1,0 +1,22 @@
+<button type="button" [class]="estilo()" (click)="abierto = true" [attr.aria-label]="etiqueta()">
+  @if (estilo() === 'pastilla') {
+    <span aria-hidden="true">📅</span>
+  }
+  {{ texto() || 'Elegir…' }}
+</button>
+
+<ion-modal class="modal-fecha" [isOpen]="abierto" (didDismiss)="abierto = false">
+  <ng-template>
+    <ion-datetime
+      [value]="valor()"
+      [presentation]="presentacion()"
+      locale="es-ES"
+      [firstDayOfWeek]="1"
+      [showDefaultButtons]="true"
+      doneText="Aceptar"
+      cancelText="Cancelar"
+      (ionChange)="elegir($event)"
+      (ionCancel)="abierto = false">
+    </ion-datetime>
+  </ng-template>
+</ion-modal>

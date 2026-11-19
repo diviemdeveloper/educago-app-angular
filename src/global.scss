@@ -1,0 +1,201 @@
+/* ── Fuentes (al principio del fichero) ──────── */
+@import '@fontsource/poppins/400.css';
+@import '@fontsource/poppins/500.css';
+@import '@fontsource/poppins/600.css';
+@import '@fontsource/poppins/700.css';
+
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import '@ionic/angular/css/core.css';
+
+/* Basic CSS for apps built with Ionic */
+@import '@ionic/angular/css/normalize.css';
+@import '@ionic/angular/css/structure.css';
+@import '@ionic/angular/css/typography.css';
+@import '@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import '@ionic/angular/css/padding.css';
+@import '@ionic/angular/css/float-elements.css';
+@import '@ionic/angular/css/text-alignment.css';
+@import '@ionic/angular/css/text-transformation.css';
+@import '@ionic/angular/css/flex-utils.css';
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * Antes: se activaba sola con el modo del móvil.
+ * Ahora: se activa cuando <html> tiene la clase "ion-palette-dark" (interruptor del Panel).
+ */
+/* @import '@ionic/angular/css/palettes/dark.system.css'; */
+@import '@ionic/angular/css/palettes/dark.class.css';
+
+
+/* ── Estilos generales de EducaGo (al final) ── */
+h1, h2, h3, ion-title {
+  font-family: var(--app-fuente-titulos);
+  letter-spacing: -0.01em;
+}
+
+ion-toolbar {
+  --background: var(--ion-background-color);   /* la barra, del color del fondo */
+  --border-width: 0;                            /* sin línea debajo */
+}
+
+/* Cabecera de las páginas (título grande + subtítulo, como en el Figma) */
+.titulo-pagina {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--ion-text-color);
+}
+.subtitulo-pagina {
+  margin: 2px 0 0;
+  font-size: 15px;
+  color: var(--app-gris);
+}
+
+/* Título de sección ("Requiere atención", "Próximos eventos"...) */
+.titulo-seccion {
+  margin: 26px 0 12px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Botones: sin mayúsculas, en forma de píldora, como en el Figma */
+ion-button {
+  --border-radius: 999px;
+  --box-shadow: none;
+  text-transform: none;
+  font-weight: 700;
+  letter-spacing: 0;
+  min-height: 40px;
+  margin: 0;
+}
+ion-button[fill='outline'] {
+  --border-width: 1.5px;
+  --background: var(--app-superficie);
+}
+ion-button.grande {
+  min-height: 52px;
+  font-size: 17px;
+}
+
+/* Tarjetas: blancas, redondeadas, sin margen de serie */
+ion-card {
+  --background: var(--app-superficie);
+  border-radius: var(--app-radio);
+  box-shadow: var(--app-sombra);
+  margin: 0;
+}
+
+/* Buscador: blanco y redondeado */
+ion-searchbar {
+  --background: var(--app-superficie);
+  --border-radius: 14px;
+  --box-shadow: none;
+  --placeholder-color: var(--app-gris);
+  --placeholder-opacity: 1;
+}
+/* El Figma usa el emoji 🔎 en el texto, así que escondemos la lupa de serie */
+ion-searchbar.sin-lupa .searchbar-search-icon { display: none; }
+ion-searchbar.sin-lupa .searchbar-input { padding-inline-start: 16px !important; }
+
+/* Pastillas (ion-chip) sin margen de serie */
+ion-chip {
+  margin: 0;
+  font-weight: 700;
+}
+
+/* Interruptores de "Pasar lista": verde del Figma */
+ion-toggle.toggle-asistencia {
+  --track-background: var(--app-borde);
+  --track-background-checked: var(--app-ok-fondo);
+  --handle-background: #9ca3af;
+  --handle-background-checked: var(--app-ok-texto);
+}
+
+/* Listas agrupadas con esquinas redondeadas */
+ion-list.list-inset {
+  border-radius: var(--app-radio);
+  box-shadow: 0 0 0 1px var(--app-borde);
+}
+
+/* Ventanas tipo hoja (ion-modal) */
+ion-modal.hoja {
+  --border-radius: 24px;
+  --background: var(--app-superficie);
+}
+ion-modal.hoja ion-content {
+  --background: var(--app-superficie);
+}
+
+/* Ventana pequeña del calendario */
+ion-modal.modal-fecha {
+  --width: 330px;
+  --height: 470px;
+  --border-radius: 18px;
+}
+ion-modal.modal-fecha ion-datetime {
+  --background: var(--app-superficie);
+}
+
+/* Campos de formulario como en el Figma: caja blanca con borde fino */
+.etiqueta-campo {
+  display: block;
+  margin: 14px 0 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ion-text-color);
+}
+.caja-campo {
+  display: flex;
+  align-items: center;
+  min-height: 46px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1.5px solid var(--app-borde);
+  background: var(--app-superficie);
+  font-size: 15px;
+  color: var(--ion-text-color);
+
+  ion-input, ion-textarea, ion-select {
+    --padding-start: 0;
+    --padding-end: 0;
+    --highlight-color: transparent;
+    --placeholder-color: var(--app-gris);
+    min-height: 44px;
+    font-size: 15px;
+  }
+}
+.caja-campo:focus-within {
+  border-color: var(--ion-color-primary);
+}
+
+/* Utilidades */
+.dos-columnas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.acciones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 10px 0 20px;
+}
+.acciones.una {
+  grid-template-columns: 1fr;
+  padding: 0 14%;
+}

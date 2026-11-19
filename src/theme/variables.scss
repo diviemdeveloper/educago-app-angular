@@ -1,0 +1,120 @@
+// Paleta de EducaGo (sacada del Figma)
+// Para más información: https://ionicframework.com/docs/theming/basics
+
+:root {
+  /* ── Tipografía ─────────────────────────────── */
+  --ion-font-family: 'Poppins', system-ui, sans-serif;          /* textos */
+  --app-fuente-titulos: 'Poppins', var(--ion-font-family);      /* títulos (variable nuestra) */
+
+  /* ── Fondo y texto ──────────────────────────── */
+  --ion-background-color: #f5f3ff;          /* violeta muy suave del Figma */
+  --ion-background-color-rgb: 245, 243, 255;
+  --ion-text-color: #1e1b4b;                /* azul noche, no negro puro */
+  --ion-text-color-rgb: 30, 27, 75;
+
+  /* ── Colores con nombre ─────────────────────── */
+  --ion-color-primary: #6d28d9;
+  --ion-color-primary-rgb: 109, 40, 217;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #5f23be;
+  --ion-color-primary-tint: #7b3ddc;
+
+  --ion-color-secondary: #06b6d4;
+  --ion-color-secondary-rgb: 6, 182, 212;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #05a0ba;
+  --ion-color-secondary-tint: #1ebdd8;
+
+  --ion-color-tertiary: #eab308;
+  --ion-color-tertiary-rgb: 234, 179, 8;
+  --ion-color-tertiary-contrast: #000000;
+  --ion-color-tertiary-contrast-rgb: 0, 0, 0;
+  --ion-color-tertiary-shade: #cd9d07;
+  --ion-color-tertiary-tint: #ecba20;
+
+  --ion-color-success: #22c55e;
+  --ion-color-success-rgb: 34, 197, 94;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #1dad52;
+  --ion-color-success-tint: #38ca6e;
+
+  --ion-color-warning: #eab308;
+  --ion-color-warning-rgb: 234, 179, 8;
+  --ion-color-warning-contrast: #000000;
+  --ion-color-warning-contrast-rgb: 0, 0, 0;
+  --ion-color-warning-shade: #cd9d07;
+  --ion-color-warning-tint: #ecba20;
+
+  --ion-color-danger: #dc2626;
+  --ion-color-danger-rgb: 220, 38, 38;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #c12121;
+  --ion-color-danger-tint: #df3b3b;
+
+  --ion-color-medium: #6b7280;
+  --ion-color-medium-rgb: 107, 114, 128;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #5e6470;
+  --ion-color-medium-tint: #79808c;
+
+  /* ── Variables propias de EducaGo (design tokens) ── */
+  --app-superficie: #ffffff;                 /* fondo de tarjetas y listas */
+  --app-violeta-suave: #ede9fe;              /* pastillas, pista de barras, pestaña activa */
+  --app-borde: #e5e7eb;                      /* líneas finas */
+  --app-gris: #6b7280;                       /* textos secundarios */
+  --app-radio: 16px;                         /* redondeo de tarjetas */
+  --app-sombra: none;                        /* el Figma es plano */
+
+  /* Estados (fondo + texto) */
+  --app-ok-fondo: #dcfce7;
+  --app-ok-texto: #166534;
+  --app-aviso-fondo: #fef3c7;
+  --app-aviso-texto: #92400e;
+  --app-error-fondo: #fee2e2;
+  --app-error-texto: #991b1b;
+  --app-finalizado-fondo: #d79c9c;
+  --app-finalizado-texto: #dc2626;
+}
+
+/* ── Modo oscuro ──────────────────────────────── */
+.ion-palette-dark {
+  --app-superficie: #1b1838;
+  --app-violeta-suave: #2e2760;
+  --app-borde: #2c2850;
+  --app-gris: #a5a3c2;
+
+  --app-ok-fondo: rgba(34, 197, 94, 0.18);
+  --app-ok-texto: #4ade80;
+  --app-aviso-fondo: rgba(234, 179, 8, 0.18);
+  --app-aviso-texto: #fcd34d;
+  --app-error-fondo: rgba(220, 38, 38, 0.2);
+  --app-error-texto: #fca5a5;
+  --app-finalizado-fondo: rgba(220, 38, 38, 0.35);
+  --app-finalizado-texto: #fecaca;
+
+  --ion-color-primary: #a78bfa;              /* más claro: se lee mejor sobre fondo oscuro */
+  --ion-color-primary-rgb: 167, 139, 250;
+  --ion-color-primary-contrast: #120f26;
+  --ion-color-primary-contrast-rgb: 18, 15, 38;
+  --ion-color-primary-shade: #927adc;
+  --ion-color-primary-tint: #af96fa;
+
+  --ion-color-medium: #a5a3c2;
+  --ion-color-medium-rgb: 165, 163, 194;
+}
+
+/* Ionic pone el fondo oscuro sobre <body>: lo sobrescribimos con la misma precisión */
+.ion-palette-dark.ios body {
+  --ion-background-color: #120f26;
+  --ion-background-color-rgb: 18, 15, 38;
+  --ion-text-color: #ede9fe;
+  --ion-text-color-rgb: 237, 233, 254;
+  --ion-item-background: #1b1838;
+  --ion-toolbar-background: #120f26;
+  --ion-tab-bar-background: #1b1838;
+}

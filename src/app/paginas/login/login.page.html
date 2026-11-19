@@ -1,0 +1,36 @@
+<ion-content [fullscreen]="true" class="login">
+  <!-- Zona 1: portada con la marca -->
+  <div class="portada">
+    <!-- Cuando tengas una foto real con licencia, descomenta esta línea (y añádela a CREDITOS.md):
+    <img src="assets/fotos/login.jpg" alt="" /> -->
+    <div class="burbujas" aria-hidden="true">
+      <span>🔬</span><span>🎭</span><span>⚽</span><span>📚</span><span>🤝</span>
+    </div>
+    <div class="marca">
+      <div class="logo"><span aria-hidden="true">🎓</span> EducaGo</div>
+      <p>Los eventos de tu centro, en un solo sitio</p>
+    </div>
+  </div>
+
+  <!-- Zona 2: hoja con el formulario -->
+  <div class="hoja">
+    <h1>Bienvenido</h1>
+    <p class="subtitulo">Inicia sesión para gestionar los eventos</p>
+
+    <ion-input mode="md" fill="outline" label="Correo electrónico" labelPlacement="floating" type="email"
+               value="direccion@educago.es">
+      <ion-icon slot="start" name="mail-outline" aria-hidden="true"></ion-icon>
+    </ion-input>
+
+    <ion-input mode="md" fill="outline" label="Contraseña" labelPlacement="floating" type="password">
+      <ion-icon slot="start" name="lock-closed-outline" aria-hidden="true"></ion-icon>
+      <ion-input-password-toggle slot="end"></ion-input-password-toggle>
+    </ion-input>
+
+    <a class="olvido">¿Olvidaste la contraseña?</a>
+
+    <ion-button class="grande" expand="block" routerLink="/app/panel" routerDirection="root">Entrar</ion-button>
+
+    <p class="registro">¿Eres estudiante? <a>Accede con tu cuenta del centro</a></p>
+  </div>
+</ion-content>

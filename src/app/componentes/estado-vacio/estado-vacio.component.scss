@@ -1,0 +1,35 @@
+:host {
+  display: block;
+}
+
+.vacio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 36px 24px;
+  text-align: center;
+  background: var(--app-superficie);
+  border-radius: var(--app-radio);
+
+  .icono {
+    display: grid;
+    place-items: center;
+    width: 72px;
+    height: 72px;
+    margin-bottom: 6px;
+    border-radius: 50%;
+    background: var(--app-violeta-suave);
+    font-size: 34px;
+  }
+  h3 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 700;
+  }
+  p {
+    margin: 0 0 10px;
+    font-size: 14px;
+    color: var(--app-gris);
+  }
+}

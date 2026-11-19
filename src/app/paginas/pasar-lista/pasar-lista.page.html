@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="'/app/eventos/' + id()" [text]="evento?.titulo ?? 'Volver'"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h1 class="titulo-pagina">Pasar lista</h1>
+  <p class="subtitulo-pagina">{{ evento?.inscritos ?? 0 }} con plaza · {{ evento?.enEspera ?? 0 }} en espera</p>
+
+  <ion-searchbar class="sin-lupa buscador" placeholder="🔎 Buscar estudiante…" [(ngModel)]="busqueda"
+                 [debounce]="150" aria-label="Buscar estudiante"></ion-searchbar>
+
+  <ion-list lines="none" class="alumnos">
+    @for (i of conPlazaVisibles; track i.id) {
+      <ion-item>
+        <ion-label>
+          <h2>{{ i.estudiante }}</h2>
+          <p>{{ i.curso }}</p>
+        </ion-label>
+        <span slot="end" class="marca" [class.si]="i.asistio">{{ i.asistio ? 'Asistió' : 'No' }}</span>
+        <ion-toggle slot="end" class="toggle-asistencia" [(ngModel)]="i.asistio"
+                    [attr.aria-label]="'Asistencia de ' + i.estudiante"></ion-toggle>
+      </ion-item>
+    } @empty {
+      <app-estado-vacio icono="🔎" titulo="Nadie con ese nombre" texto="Revisa cómo lo has escrito.">
+        <ion-button fill="outline" (click)="busqueda = ''">Borrar búsqueda</ion-button>
+      </app-estado-vacio>
+    }
+  </ion-list>
+
+  <h2 class="titulo-espera">Lista de espera (no se pasa lista)</h2>
+  @for (i of enEspera; track i.id) {
+    <div class="espera">{{ i.posicionEspera }}. {{ i.estudiante }}</div>
+  } @empty {
+    <p class="nadie">No hay nadie en lista de espera.</p>
+  }
+
+  <ion-button class="grande guardar" expand="block" (click)="guardado = true">Guardar asistencia</ion-button>
+
+  <ion-toast [isOpen]="guardado" (didDismiss)="guardado = false" message="✅ Asistencia guardada"
+             [duration]="1800" position="top"></ion-toast>
+</ion-content>

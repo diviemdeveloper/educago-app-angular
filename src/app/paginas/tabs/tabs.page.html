@@ -1,0 +1,10 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    @for (p of pestanas; track p.tab) {
+      <ion-tab-button [tab]="p.tab" [attr.aria-label]="p.texto">
+        <span class="emoji" aria-hidden="true">{{ p.icono }}</span>
+        <ion-label>{{ p.texto }}</ion-label>
+      </ion-tab-button>
+    }
+  </ion-tab-bar>
+</ion-tabs>

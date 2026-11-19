@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="'/app/eventos/' + id()" [text]="evento?.titulo ?? 'Volver'"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h1 class="titulo-pagina">Historial de cambios</h1>
+  <p class="subtitulo-pagina">Cada cambio notifica a los inscritos</p>
+
+  <div class="cambios">
+    @for (c of cambios; track c.id) {
+      <article class="cambio">
+        <div class="cabeza">
+          <h2>{{ c.campo }}</h2>
+          <span class="fecha">{{ diaMesHora(c.fecha) }}</span>
+        </div>
+        <div class="valores">
+          <span class="antes">{{ c.valorAnterior }}</span>
+          <span class="flecha" aria-label="pasa a">→</span>
+          <span class="despues">{{ c.valorNuevo }}</span>
+        </div>
+        <p class="autor">✍ {{ c.autor }}</p>
+      </article>
+    } @empty {
+      <app-estado-vacio icono="🕓" titulo="Sin cambios" texto="Este evento no se ha modificado desde que se publicó." />
+    }
+  </div>
+
+  @if (cambios.length && evento) {
+    <p class="notificados">🔔 Notificados: {{ evento.inscritos }} inscritos + {{ evento.seguidores }} seguidores</p>
+  }
+</ion-content>

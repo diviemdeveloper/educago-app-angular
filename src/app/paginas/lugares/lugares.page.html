@@ -1,0 +1,54 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <app-cabecera-pagina titulo="Lugares" subtitulo="Aforos y disponibilidad" />
+
+  <ion-list lines="none" class="lugares">
+    @for (l of lugares; track l.id) {
+      <ion-item>
+        <app-icono-categoria slot="start" [icono]="l.icono" color="#c4b5fd" [tamano]="44" />
+        <ion-label>
+          <h2>{{ l.nombre }}</h2>
+          <p>Aforo: {{ l.aforoMaximo }} personas</p>
+        </ion-label>
+        <app-chip-estado slot="end" [estado]="l.ocupadoHoy ? 'OCUPADO' : 'LIBRE'" />
+      </ion-item>
+    } @empty {
+      <app-estado-vacio icono="📍" titulo="Todavía no hay lugares" texto="Añade el primero con el botón de abajo." />
+    }
+  </ion-list>
+
+  <ion-button class="grande" expand="block" (click)="modalAbierto = true">+ Añadir lugar</ion-button>
+
+  <!-- Ventana tipo hoja: nuevo lugar -->
+  <ion-modal class="hoja" [isOpen]="modalAbierto" (didDismiss)="modalAbierto = false"
+             [initialBreakpoint]="0.6" [breakpoints]="[0, 0.6, 0.9]">
+    <ng-template>
+      <ion-content class="ion-padding">
+        <div class="cabecera-modal">
+          <h2>Nuevo lugar</h2>
+          <ion-button fill="clear" (click)="modalAbierto = false">Cancelar</ion-button>
+        </div>
+
+        <label class="etiqueta-campo" for="nombre">Nombre</label>
+        <div class="caja-campo">
+          <ion-input id="nombre" [(ngModel)]="nuevoNombre" placeholder="Ej.: Aula de música" aria-label="Nombre"></ion-input>
+        </div>
+
+        <label class="etiqueta-campo" for="aforo">Aforo</label>
+        <div class="caja-campo">
+          <ion-input id="aforo" type="number" inputmode="numeric" [(ngModel)]="nuevoAforo" aria-label="Aforo"></ion-input>
+        </div>
+
+        <span class="etiqueta-campo">Icono</span>
+        <div class="iconos">
+          @for (i of iconos; track i) {
+            <button type="button" [class.elegido]="nuevoIcono === i" (click)="nuevoIcono = i"
+                    [attr.aria-label]="'Icono ' + i">{{ i }}</button>
+          }
+        </div>
+
+        <ion-button class="grande guardar" expand="block" (click)="guardar()"
+                    [disabled]="!nuevoNombre.trim() || nuevoAforo < 1">Guardar lugar</ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

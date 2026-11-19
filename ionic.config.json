@@ -1,0 +1,7 @@
+{
+  "name": "educago-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

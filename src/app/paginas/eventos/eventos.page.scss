@@ -1,0 +1,47 @@
+ion-content {
+  --padding-start: 20px;
+  --padding-end: 20px;
+}
+
+/* ── Filtros: píldoras blancas, la activa en violeta ── */
+ion-segment.filtros {
+  --background: transparent;
+  gap: 8px;
+  margin: 0 -4px 18px;
+  overflow: visible;
+}
+
+ion-segment-button {
+  --background: var(--app-superficie);
+  --background-checked: var(--ion-color-primary);
+  --color: var(--ion-color-primary);
+  --color-checked: var(--ion-color-primary-contrast);
+  --indicator-color: transparent;              /* sin la barra/indicador de serie */
+  --border-radius: 999px;
+  --border-width: 0;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  min-width: auto;
+  min-height: 34px;
+  border-radius: 999px;
+  margin: 0 4px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: 0;
+
+  &::before { display: none; }                 /* quita el separador entre botones en iOS */
+}
+
+ion-segment-button.segment-button-checked {
+  background: var(--ion-color-primary);
+}
+
+.lista {
+  padding-bottom: 90px;                        /* que el botón flotante no tape nada */
+}
+
+ion-fab-button {
+  --background: var(--ion-color-primary);
+  --box-shadow: 0 6px 18px rgba(109, 40, 217, 0.35);
+}

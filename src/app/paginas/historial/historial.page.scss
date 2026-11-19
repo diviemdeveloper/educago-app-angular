@@ -1,0 +1,81 @@
+ion-back-button {
+  --color: var(--ion-color-primary);
+  font-weight: 700;
+}
+
+ion-content {
+  --padding-start: 20px;
+  --padding-end: 20px;
+}
+
+.cambios {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.cambio {
+  position: relative;
+  padding: 16px 16px 14px 32px;
+  border-radius: var(--app-radio);
+  background: var(--app-superficie);
+
+  /* Raya violeta a la izquierda */
+  &::before {
+    content: '';
+    position: absolute;
+    left: 14px;
+    top: 16px;
+    bottom: 16px;
+    width: 5px;
+    border-radius: 4px;
+    background: var(--ion-color-primary);
+  }
+}
+
+.cabeza {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  h2 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .fecha {
+    font-size: 11px;
+    color: var(--app-gris);
+  }
+}
+
+.valores {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0 8px;
+
+  span:not(.flecha) {
+    padding: 3px 12px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  .antes   { background: var(--app-error-fondo); color: var(--app-error-texto); }
+  .despues { background: var(--app-ok-fondo);    color: var(--app-ok-texto); }
+  .flecha  { color: var(--ion-text-color); }
+}
+
+.autor {
+  margin: 0;
+  font-size: 12px;
+  color: var(--app-gris);
+}
+
+.notificados {
+  margin-top: 22px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--app-gris);
+}
