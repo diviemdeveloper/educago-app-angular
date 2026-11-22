@@ -23,6 +23,7 @@ export const EVENTOS: Evento[] = [
     inscritos: 36,
     enEspera: 6,
     seguidores: 12,
+    cartel: 'assets/fotos/feria-ciencias.jpg',
   },
   {
     id: 2,
@@ -41,6 +42,7 @@ export const EVENTOS: Evento[] = [
     inscritos: 0,
     enEspera: 0,
     seguidores: 4,
+    cartel: 'assets/fotos/semana-cultural.jpg',
   },
   {
     id: 3,
@@ -59,6 +61,7 @@ export const EVENTOS: Evento[] = [
     inscritos: 150,
     enEspera: 6,
     seguidores: 20,
+    cartel: 'assets/fotos/torneo-futbol.jpg',
   },
   {
     id: 4,
@@ -77,5 +80,6 @@ export const EVENTOS: Evento[] = [
     inscritos: 120,
     enEspera: 0,
     seguidores: 30,
+    cartel: 'assets/fotos/recogida-alimentos.jpg',
   },
 ];

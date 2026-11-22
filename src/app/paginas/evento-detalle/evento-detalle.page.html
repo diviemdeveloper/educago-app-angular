@@ -2,6 +2,9 @@
   @if (evento; as e) {
     <!-- Portada del color de la categoría -->
     <div class="portada" [style.background]="e.categoria.color">
+      @if (e.cartel) {
+        <img class="foto" [src]="e.cartel" alt="" />
+      }
       <ion-back-button class="volver" defaultHref="/app/eventos" text="Volver"></ion-back-button>
       <div class="emoji" aria-hidden="true">{{ e.categoria.icono }}</div>
       <span class="categoria">{{ e.categoria.nombre }}</span>

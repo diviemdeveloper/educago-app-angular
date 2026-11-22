@@ -1,18 +1,23 @@
 <a class="tarjeta" [routerLink]="['/app/eventos', evento().id]">
   <span class="barra" [style.background]="evento().categoria.color"></span>
 
-  <div class="cuerpo">
-    <app-icono-categoria [icono]="evento().categoria.icono" [color]="evento().categoria.color" />
+  <div class="derecha">
+    @if (evento().cartel) {
+      <img class="foto" [src]="evento().cartel" [alt]="evento().titulo" loading="lazy" />
+    }
 
-    <div class="textos">
-      <h3>{{ evento().titulo }}</h3>
-      <p class="linea">{{ linea() }}</p>
-      <p class="categoria" [style.color]="evento().categoria.color">{{ evento().categoria.nombre }}</p>
-    </div>
+    <div class="cuerpo">
+      <app-icono-categoria [icono]="evento().categoria.icono" [color]="evento().categoria.color" />
 
-    <!-- Hueco para la insignia de arriba a la derecha (estado o plazas) -->
-    <div class="insignia">
-      <ng-content select="[insignia]" />
+      <div class="textos">
+        <h3>{{ evento().titulo }}</h3>
+        <p class="linea">{{ linea() }}</p>
+        <p class="categoria" [style.color]="evento().categoria.color">{{ evento().categoria.nombre }}</p>
+      </div>
+
+      <div class="insignia">
+        <ng-content select="[insignia]" />
+      </div>
     </div>
   </div>
 </a>
